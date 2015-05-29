@@ -2,7 +2,7 @@ FROM debian
 
 RUN sed -i '0,/RE/s/main/main contrib non-free/' /etc/apt/sources.list
 RUN echo 'deb [arch=amd64,i386] http://repo.steampowered.com/steam precise steam' > /etc/apt/sources.list.d/steam-inst.list && dpkg --add-architecture i386
-RUN apt-get update && apt-get install -yq --no-install-recommends --force-yes sudo alsa-utils steam
+RUN apt-get update && apt-get install -yq --no-install-recommends --force-yes sudo alsa-utils libgl1-mesa-dri steam
 RUN rm -rf /etc/apt/sources.list.d/steam-inst.list
 RUN apt-get update && apt-get install -yq libgl1-mesa-dri:i386 libgl1-mesa-glx:i386 libc6:i386 libnss3:i386
 
@@ -12,5 +12,6 @@ RUN adduser --disabled-password --gecos 'Steam' steam
 
 USER steam
 ENV HOME /home/steam
+VOLUME /home/steam
 
 CMD ["steam"]
