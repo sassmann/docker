@@ -10,7 +10,7 @@ RUN apt-get update && apt-get install -yq --no-install-recommends --force-yes su
 RUN echo 'steam ALL = NOPASSWD: ALL' > /etc/sudoers.d/steam
 RUN chmod 0440 /etc/sudoers.d/steam
 RUN adduser --disabled-password steam --gecos "Steam"
-RUN ln -s /bin/dbus-daemon /usr/bin/dbus-daemon
+#RUN ln -s /bin/dbus-daemon /usr/bin/dbus-daemon
 
 USER steam
 ENV HOME /home/steam
