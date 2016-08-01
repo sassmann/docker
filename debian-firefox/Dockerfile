@@ -10,4 +10,4 @@ USER user
 ENV HOME /home/user
 ENV PULSE_SERVER unix:/tmp/pulse
 
-CMD ["firefox"]
+CMD ["firefox","about:blank"]
