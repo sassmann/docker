@@ -9,13 +9,17 @@ RUN apt-get update && apt-get install -yq --no-install-recommends \
     && dpkg -i www.deb-multimedia.org/pool/non-free/f/flash-player/flashplayer-mozilla* \
     && rm -rf /tmp/* /var/{tmp,cache}/* /var/lib/{apt,dpkg}/
 RUN mkdir -p /etc/firefox/
-RUN echo -e 'pref("reader.parse-on-load.enabled", false);\n\
+RUN echo -e '\
 pref("browser.crashReports.unsubmittedCheck.autoSubmit", true);\n\
-pref("toolkit.telemetry.reportingpolicy.firstRun", false);\n\
+pref("browser.startup.homepage","data:text/plain,browser.startup.homepage=https://www.startpage.com");\n\
+pref("datareporting.healthreport.service.firstRun", false);\n\
 pref("datareporting.healthreport.uploadEnabled", false);\n\
 pref("datareporting.policy.dataSubmissionPolicyBypassNotification", true);\n\
-pref("datareporting.healthreport.service.firstRun", false);\n'\
+pref("reader.parse-on-load.enabled", false);\n\
+pref("toolkit.telemetry.reportingpolicy.firstRun", false);\n'\
 >> /etc/firefox/syspref.js
+#FIXME: does not stick
+#pref("browser.search.widget.inNavBar", true);\n\
 
 RUN adduser --disabled-password user --gecos "User"
 USER user
