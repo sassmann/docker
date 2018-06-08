@@ -4,7 +4,7 @@ RUN apt-get update \
     && curl -s https://updates.signal.org/desktop/apt/keys.asc | apt-key add - \
     && echo "deb [arch=amd64] https://updates.signal.org/desktop/apt xenial main" > /etc/apt/sources.list.d/signal-xenial.list \
     && apt-get update \
-    && apt-get install -yq --no-install-recommends libx11-xcb1 libasound2 signal-desktop \
+    && apt-get install -yq --no-install-recommends libx11-xcb1 libasound2 libgtk-3-0 signal-desktop \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
