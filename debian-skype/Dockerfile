@@ -1,4 +1,4 @@
-FROM debian
+FROM debian:sid
 RUN dpkg --add-architecture i386 \
     && apt-get update \
     && apt-get install -yq --no-install-recommends libpulse0 pulseaudio wget curl \

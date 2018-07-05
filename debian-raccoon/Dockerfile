@@ -1,4 +1,4 @@
-FROM debian:unstable
+FROM debian:sid
 SHELL ["/bin/bash", "-c"]
 
 RUN apt-get update && apt-get install -yq --no-install-recommends wget default-jre \

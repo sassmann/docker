@@ -1,4 +1,4 @@
-FROM debian
+FROM debian:sid
 RUN apt-get update \
     && apt-get install -yq --no-install-recommends curl gnupg apt-transport-https ca-certificates \
     && curl -s https://updates.signal.org/desktop/apt/keys.asc | apt-key add - \

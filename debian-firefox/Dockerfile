@@ -1,4 +1,4 @@
-FROM debian:unstable
+FROM debian:sid
 SHELL ["/bin/bash", "-c"]
 
 #RUN sed -i '0,/RE/s/main/main contrib/' /etc/apt/sources.list
