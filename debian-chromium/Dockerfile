@@ -14,4 +14,4 @@ USER user
 ENV HOME /home/user
 ENV PULSE_SERVER unix:/tmp/pulse
 
-CMD ["chromium","--no-sandbox","--no-first-run","about:blank"]
+CMD ["chromium","--no-sandbox","--no-first-run","--enable-native-gpu-memory-buffers","--enable-oop-rasterization","--force-gpu-rasterization","--enable-zero-copy","about:blank"]
