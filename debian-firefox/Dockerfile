@@ -3,7 +3,7 @@ SHELL ["/bin/bash", "-c"]
 
 RUN printf 'path-exclude=/usr/share/locale/*\npath-exclude=/usr/share/doc/*\npath-include=/usr/share/locale/en/*' > /etc/dpkg/dpkg.cfg.d/purge
 RUN apt-get update && apt-get install -yq --no-install-recommends \
-    firefox wget libgtk-3-0 libgtk-3-common libcurl3 libnspr4 libnss3 libpango1.0 libcanberra-gtk3-module packagekit-gtk3-module libgl1-mesa-dri libvdpau-va-gl1 va-driver-all fonts-dejavu pulseaudio fonts-noto-cjk icedtea-netx-common \
+    firefox wget libgtk-3-0 libgtk-3-common libcurl4 libnspr4 libnss3 libpango1.0 libcanberra-gtk3-module packagekit-gtk3-module libgl1-mesa-dri libvdpau-va-gl1 va-driver-all fonts-dejavu pulseaudio fonts-noto-cjk icedtea-netx-common \
    && wget -A amd64.deb -e robots=off -m -p -E -k -K -np http://www.deb-multimedia.org/pool/non-free/f/flash-player/ \
     && dpkg -i www.deb-multimedia.org/pool/non-free/f/flash-player/flashplayer-mozilla* \
     && rm -rf /tmp/* /var/{tmp,cache}/* /var/lib/{apt,dpkg}/
