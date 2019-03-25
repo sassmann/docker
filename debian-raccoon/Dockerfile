@@ -10,6 +10,6 @@ USER user
 ENV HOME /home/user
 ENV PULSE_SERVER unix:/tmp/pulse
 
-RUN cd ; wget http://raccoon.onyxbits.de/sites/raccoon.onyxbits.de/files/raccoon-4.2.5.jar
+RUN cd ; wget http://raccoon.onyxbits.de/sites/raccoon.onyxbits.de/files/raccoon-4.5.0.jar
 
-CMD ["java","-jar","/home/user/raccoon-4.2.5.jar"]
+CMD ["java","-jar","/home/user/raccoon-4.5.0.jar"]
