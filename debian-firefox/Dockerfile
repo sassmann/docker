@@ -1,5 +1,4 @@
 FROM debian:sid
-SHELL ["/bin/bash", "-c"]
 
 RUN printf 'path-exclude=/usr/share/locale/*\npath-exclude=/usr/share/doc/*\npath-include=/usr/share/locale/en/*' > /etc/dpkg/dpkg.cfg.d/purge
 RUN apt-get update && apt-get install -yq --no-install-recommends \
@@ -8,7 +7,7 @@ RUN apt-get update && apt-get install -yq --no-install-recommends \
     && dpkg -i www.deb-multimedia.org/pool/non-free/f/flash-player/flashplayer-mozilla* \
     && rm -rf /tmp/* /var/{tmp,cache}/* /var/lib/{apt,dpkg}/
 RUN mkdir -p /etc/firefox/
-RUN echo -e '\
+RUN /bin/echo -e '\
 pref("browser.crashReports.unsubmittedCheck.autoSubmit", true);\n\
 pref("browser.startup.homepage","data:text/plain,browser.startup.homepage=https://www.startpage.com");\n\
 pref("datareporting.healthreport.service.firstRun", false);\n\
@@ -23,6 +22,7 @@ pref("toolkit.telemetry.reportingpolicy.firstRun", false);\n'\
 
 RUN adduser --disabled-password user --gecos "User"
 USER user
+RUN mkdir /home/user/.cache
 ENV HOME /home/user
 ENV PULSE_SERVER unix:/tmp/pulse
 
