@@ -12,4 +12,4 @@ RUN echo "deb [arch=amd64] https://updates.signal.org/desktop/apt xenial main" >
 
 ENV PULSE_SERVER unix:/tmp/pulse
 
-CMD ["signal-desktop"]
+CMD ["signal-desktop","--no-sandbox"]
