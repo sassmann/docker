@@ -6,7 +6,7 @@ RUN apt-get update \
     && rm -rf /var/lib/apt/lists/*
 RUN echo "deb [arch=amd64] https://updates.signal.org/desktop/apt xenial main" > /etc/apt/sources.list.d/signal-xenial.list \
     && apt-get update \
-    && apt-get install -yq --no-install-recommends libx11-xcb1 libasound2 libgtk-3-0 signal-desktop \
+    && apt-get install -yq --no-install-recommends libx11-xcb1 libasound2 hunspell libgtk-3-0 libcanberra-gtk3-module packagekit-gtk3-module signal-desktop \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
