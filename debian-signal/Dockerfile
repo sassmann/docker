@@ -12,4 +12,4 @@ RUN echo "deb [arch=amd64] https://updates.signal.org/desktop/apt xenial main" >
 
 ENV PULSE_SERVER unix:/tmp/pulse
 
-CMD ["signal-desktop","--no-sandbox"]
+CMD ["signal-desktop","--no-sandbox","--ignore-gpu-blacklist","--no-xshm"]
