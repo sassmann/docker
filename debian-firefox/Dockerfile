@@ -6,6 +6,8 @@ RUN apt-get update && apt-get install -yq --no-install-recommends \
    && wget -A amd64.deb -e robots=off -m -p -E -k -K -np http://www.deb-multimedia.org/pool/non-free/f/flash-player/ || exit 0 \
     && dpkg -i www.deb-multimedia.org/pool/non-free/f/flash-player/flashplayer-mozilla* \
     && rm -rf /tmp/* /var/{tmp,cache}/* /var/lib/{apt,dpkg}/
+#RUN sed -i '0,/RE/s/main/main contrib non-free/' /etc/apt/sources.list
+#RUN apt-get update && apt-get install -yq --no-install-recommends libglvnd-dev libglx-nvidia0 mesa-utils libnvidia-egl-wayland-dev strace
 RUN mkdir -p /etc/firefox/
 RUN /bin/echo -e '\
 pref("browser.crashReports.unsubmittedCheck.autoSubmit", true);\n\
@@ -15,6 +17,8 @@ pref("datareporting.healthreport.uploadEnabled", false);\n\
 pref("datareporting.policy.dataSubmissionPolicyBypassNotification", true);\n\
 pref("reader.parse-on-load.enabled", false);\n\
 pref("signon.rememberSignons", false);\n\
+pref("media.ffmpeg.vaapi.enabled", true);\n\
+pref("layers.acceleration.force-enabled", true);\n\
 pref("toolkit.telemetry.reportingpolicy.firstRun", false);\n'\
 >> /etc/firefox/syspref.js
 #FIXME: does not stick
