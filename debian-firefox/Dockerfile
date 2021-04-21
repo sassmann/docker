@@ -2,10 +2,8 @@ FROM debian:sid
 
 RUN printf 'path-exclude=/usr/share/locale/*\npath-exclude=/usr/share/doc/*\npath-include=/usr/share/locale/en/*' > /etc/dpkg/dpkg.cfg.d/purge
 RUN apt-get update && apt-get install -yq --no-install-recommends \
-    firefox wget libgtk2.0 libgtk-3-0 libgtk-3-common libcurl4 libnspr4 libnss3 libpango1.0 libcanberra-gtk3-module libxt6 packagekit-gtk3-module libgl1-mesa-dri libvdpau-va-gl1 va-driver-all fonts-dejavu pulseaudio fonts-noto-cjk icedtea-netx-common \
-   && wget -A amd64.deb -e robots=off -m -p -E -k -K -np http://www.deb-multimedia.org/pool/non-free/f/flash-player/ || exit 0 \
-    && dpkg -i www.deb-multimedia.org/pool/non-free/f/flash-player/flashplayer-mozilla* \
-    && rm -rf /tmp/* /var/{tmp,cache}/* /var/lib/{apt,dpkg}/
+    firefox libgtk-3-0 libgtk-3-common libcurl4 libnspr4 libnss3 libpango1.0 libcanberra-gtk3-module libxt6 packagekit-gtk3-module libgl1-mesa-dri libvdpau-va-gl1 va-driver-all fonts-dejavu pulseaudio fonts-noto-cjk icedtea-netx-common
+    #firefox wget libgtk2.0 libgtk-3-0 libgtk-3-common libcurl4 libnspr4 libnss3 libpango1.0 libcanberra-gtk3-module libxt6 packagekit-gtk3-module libgl1-mesa-dri libvdpau-va-gl1 va-driver-all fonts-dejavu pulseaudio fonts-noto-cjk icedtea-netx-common
 #RUN sed -i '0,/RE/s/main/main contrib non-free/' /etc/apt/sources.list
 #RUN apt-get update && apt-get install -yq --no-install-recommends libglvnd-dev libglx-nvidia0 mesa-utils libnvidia-egl-wayland-dev strace
 RUN mkdir -p /etc/firefox/
